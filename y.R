@@ -15,7 +15,10 @@ mk.read_values = function (from, length) {
             d = as.Date (d1, origin="1970-1-1")
             print (class(d))
             print (d, format (d, "%Y%m%d"))
-            t0 = read.table (gzfile (format (d, format="../logging/output-%Y%m%d.gz")), header = F, col.names = cnames, fill=TRUE)
+            t0 = tryCatch ({read.table (gzfile (format (d, format="../logging/output-%Y%m%d.gz")), header = F, col.names = cnames, fill=TRUE)},
+                           warning = function (warn) {},
+                           error = function (err) {return (as.data.frame (rep (NA, length(cnames))))},
+                           finally = {})
             if (first_loop) {
                 first_loop = FALSE
                 t1 = t0
