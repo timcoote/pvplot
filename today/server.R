@@ -13,8 +13,8 @@ shinyServer(function(input, output, session) {
     t1 = reactive ({ mutate (na.omit (vals()), ts = as.POSIXct (date, format= "%Y%m%d-%H:%M:%S"), year = as.POSIXlt (ts)$year, month = as.POSIXlt (ts)$mon, day = as.POSIXlt (ts)$yday + 1, hour = as.POSIXlt(ts)$hour) })
 #    readingfunc = function (tvals) {select (tvals, ts, year, month, day, hour, EW, WW, OW, E_Day, E_month, E_Year, Efficiency)}
 
-#    thisdata = reactive ({select (t1(), ts, year, month, day, hour, EW, WW, OW, E_Day, E_month, E_Year, Efficiency)})
-    thisdata = reactive (t1()[,usefulcols])
+    thisdata = reactive ({select (t1(), ts, year, month, day, hour, EW, WW, OW, E_Day, E_month, E_Year, Efficiency)})
+#    thisdata = reactive (t1()[,usefulcols])
 
     cat ("first\n", file =stderr())    
 #    cat (class(t()), file =stderr())    
