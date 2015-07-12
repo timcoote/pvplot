@@ -1,5 +1,5 @@
 library (ggvis)
-library (dplyr)
+#library (dplyr)
 
 
 shinyUI(pageWithSidebar(
