@@ -1,15 +1,13 @@
 library (ggvis)
+library (DT)
 #library (dplyr)
 
 
-shinyUI(pageWithSidebar(
+#shinyUI(pageWithSidebar(
+shinyUI(fluidPage(
   headerPanel ("Current output"),
-  sidebarPanel(
-    dataTableOutput ("theWords")
-#    textOutput ("theWords")
-  ),
-  mainPanel(
-    uiOutput("ggvis_ui"),
-    ggvisOutput("ggvis")
-  )
+  fluidRow (
+        column (width = 5, ggvisOutput("cumsum")), column (width = 4, ggvisOutput("powervis"))
+    ),
+  DT::dataTableOutput ("theWords")
 ))
