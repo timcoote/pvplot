@@ -48,7 +48,8 @@ t1 = mutate (na.omit (t1), ts = as.POSIXct (date, format= "%Y%m%d-%H:%M:%S"), ye
 t = select (t1, ts, year, month, day, hour, EW, WW, OW, E_Day, E_month, E_Year, Efficiency)
 
 ts = as.POSIXlt (t1$date, format= "%Y%m%d-%H:%M:%S")
-vv=summarize(group_by (t, year, month, day, hour), max (E_Year))
+t %>% group_by (year, month, day, hour)
+vv = t %>% group_by (year, month, day, hour) %>% summarise_each (funs(max), E_Year)
 names (vv) = c("year", "month", "day", "hour", "OW")
 p = layer_points(ggvis (vv, ~day, ~OW, stroke=~year, fill=~year), size := input_slider (10, 100))
 #layer_points(ggvis (vv, ~hour, ~OW, stroke=~year, fill=~year)) 
