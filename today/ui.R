@@ -5,7 +5,7 @@ library (DT)
 
 #shinyUI(pageWithSidebar(
 shinyUI(fluidPage(
-  headerPanel ("Current output"),
+  headerPanel ("current output"),
   fluidRow (
         column (width = 5, ggvisOutput("cumsum")), column (width = 4, ggvisOutput("powervis"))
     ),
