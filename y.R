@@ -35,8 +35,8 @@ mrv = mk.read_values (from, to)
 
 #t0 = read.table (gzfile (format (today-3, format="../logging/output-%Y%m%d.gz")), header = F, col.names = cnames, fill=TRUE)
 #t2 = read.table (gzfile (format (today-368, format="../logging/output-%Y%m%d.gz")), header = F, col.names = cnames, fill=TRUE)
-t0 = mrv (today - (365+6+10), 7+10)
-t2 = mrv (today - (6+10), 7+10)
+t0 = mrv (today - (365+6+30), 7+30)
+t2 = mrv (today - (6+30), 7+30)
 
 t1 = rbind (t0, t2)
 #t_test = na.omit (t0)

@@ -9,7 +9,7 @@ shinyServer(function(input, output, session) {
     vals = reactiveFileReader (1000, session, "../../logging/output", read.table, header = F, col.names = cnames, fill=TRUE)
     
 # remove rows with missing values (na.omit)
-    t1 = reactive ({ mutate (na.omit (vals()), ts = as.POSIXct (date, format= "%Y%m%d-%H:%M:%S", tz="GMT"), year = as.POSIXlt (ts, tz="GMT")$year, month = as.POSIXlt (ts)$mon, day = as.POSIXlt (ts)$yday + 1, hour = as.POSIXlt(ts, tz="GMT")$hour) })
+    t1 = reactive ({ mutate (na.omit (vals()), ts = as.POSIXct (date, format= "%Y%m%d-%H:%M:%S"), year = as.POSIXlt (ts)$year, month = as.POSIXlt (ts)$mon, day = as.POSIXlt (ts)$yday + 1, hour = as.POSIXlt(ts)$hour) })
 
     thisdata = reactive ({select (t1(), ts, year, month, day, hour, EW, WW, OW, E_Day, E_month, E_Year, Efficiency)})
 
