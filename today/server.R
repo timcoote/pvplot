@@ -6,7 +6,7 @@ library (dplyr)
 cnames = c ("date", "EV", "EA", "EW", "WV", "WA", "WW", "OV", "OA", "OW", "OHz", "Efficiency", "Temp1", "Temp2", "E_Day", "E_Week", "dunno", "E_month", "E_Year", "E Tot1", "E Tot2", "Response")
 
 shinyServer(function(input, output, session) {
-    vals = reactiveFileReader (1000, session, "/vagrant/logging/output", read.table, header = F, col.names = cnames, fill=TRUE)
+    vals = reactiveFileReader (1000, session, "/var/run/aurora/output", read.table, header = F, col.names = cnames, fill=TRUE)
     
 # remove rows with missing values (na.omit)
     t1 = reactive ({ mutate (na.omit (vals()), ts = as.POSIXct (date, format= "%Y%m%d-%H:%M:%S"), year = as.POSIXlt (ts)$year, month = as.POSIXlt (ts)$mon, day = as.POSIXlt (ts)$yday + 1, hour = as.POSIXlt(ts)$hour) })
