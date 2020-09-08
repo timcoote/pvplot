@@ -1,18 +1,11 @@
 # pvplot
-produce Rstudio-server plots from pv feed in.
+Produce Shiny Server from pv feed in, using Aurora Inverter query tool from `http://www.curtronics.com/Solar/AuroraData.html`.
 
-Plots use R and shiny-server. Invoke as:
+This repo is a non-parameterised chunk of code that's packaged and configured into a couple of systemd service elsewhere using rpm.
 
-sudo shiny-server plotting/today/today.conf
+Tested with `shiny-server-1.5.14.948-1.x86_64`, `aurora-1.9.3.tar.gz` on Fedora 32.
 
-[require sudo to get permissions for port 80]
+Works with IPv6.
 
-This build was built to explore the use of IPv6 + shiny.
+Beware R modifications as Tidyverse is evolving and introducing some breakages (notably https://bit.ly/30sfAeg)
 
-Requires:
-Shiny Server v1.4.0.0
-Node.js v0.10.21
-
-Shiny-server built with this commit: 67e6e9fdf5c8c4
-
-The IPv6 code made it into shiny-server 4.0, but that's 64 bit only.
